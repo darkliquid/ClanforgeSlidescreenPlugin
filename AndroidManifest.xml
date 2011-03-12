@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="uk.co.darkliquid.android.slidescreenplugins.clanforge"
+      android:versionName="0.1.0" android:versionCode="3">
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <provider
+            android:name="ClanforgeContentProvider"
+            android:authorities="uk.co.darkliquid.android.slidescreenplugins.clanforge">
+        </provider>
+        <receiver
+            android:name="ClanforgePluginReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.larvalabs.slidescreen.DISCOVER_PLUGINS"/>
+            </intent-filter>
+        </receiver>
+        <activity
+                android:label="Clanforge Settings"
+                android:name=".ClanforgePluginPreferences"
+                android:exported="true">
+        </activity>
+    </application>
+    <uses-sdk android:minSdkVersion="4"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>

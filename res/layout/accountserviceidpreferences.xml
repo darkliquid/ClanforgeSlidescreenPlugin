@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:paddingLeft="5dp"
+  android:paddingRight="5dp">
+
+  <EditText android:id="@+id/account_service_id"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:hint="Account Service ID, e.g. 12345"
+              android:numeric="decimal"
+              android:maxLength="10"
+              android:inputType="numberDecimal" />
+
+</LinearLayout>
