@@ -33,7 +33,7 @@ public class ClanforgePluginReceiver extends PluginReceiver {
 
     @Override
     public int getIconResourceId() {
-        return R.drawable.group_icon;
+        return R.raw.icon;
     }
 
     @Override
