@@ -18,7 +18,7 @@ public class ClanforgePluginReceiver extends PluginReceiver {
 
     @Override
     public int getColor() {
-        return Color.rgb(255, 255, 255);
+        return Color.parseColor("#329cc2");
     }
 
     @Override

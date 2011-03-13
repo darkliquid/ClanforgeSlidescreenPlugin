@@ -4,11 +4,13 @@ Clanforge plugin for Slidescreen
 This is a plugin for larvalabs' Slidescreen home-screen replacement for android. 
 It pulls down information about your servers.
 
+I drew the crappy icon as best I could using:
+http://svg-edit.googlecode.com/svn/branches/2.5.1/editor/svg-editor.html 
+as it seemed to be the only thing that would generate something Slidescreen 
+could render
 
 TODO
 ====
 
- * Find out how to make an SVG icon that actually WORKS!
  * Come up with more cool ideas for the plugin
  * Implement said cool ideas
- * Choose a better colour for the plugin, not sure white is the best one
