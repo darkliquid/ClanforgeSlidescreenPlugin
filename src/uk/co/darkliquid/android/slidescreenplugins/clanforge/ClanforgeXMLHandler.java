@@ -1,5 +1,7 @@
 package uk.co.darkliquid.android.slidescreenplugins.clanforge;
 
+import android.os.Bundle;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -7,18 +9,18 @@ import org.xml.sax.helpers.DefaultHandler;
 import java.util.ArrayList;
 
 public class ClanforgeXMLHandler extends DefaultHandler {
-	private ArrayList<ClanforgeServer> serverList = null;
-	private ClanforgeServer currentServer = null;
+	private ArrayList<Bundle> serverList = null;
+	private Bundle currentServer = null;
 	private String currentValue = null;
 	private boolean currentElement = false;
 
-	public ArrayList<ClanforgeServer> getServerList() {
+	public ArrayList<Bundle> getServerList() {
 		return serverList;
 	}
 
 	@Override
 	public void startDocument() {
-		serverList = new ArrayList<ClanforgeServer>();
+		serverList = new ArrayList<Bundle>();
 	}
 
     @Override
@@ -28,9 +30,9 @@ public class ClanforgeXMLHandler extends DefaultHandler {
     	currentElement = true;
 
         if (localName.equals("server")) {
-        	currentServer = new ClanforgeServer();
+        	currentServer = new Bundle();
         	String status = atts.getValue("status");
-        	currentServer.status = status.equals("UP");
+        	currentServer.putString("Status", status);
         }
     }
 
@@ -52,22 +54,31 @@ public class ClanforgeXMLHandler extends DefaultHandler {
         	serverList.add(currentServer);
         	currentServer = null;
         } else if (localName.equals("hostname")) {
-        	currentServer.host = currentValue;
+        	currentServer.putString("Host", currentValue);
         	currentValue = null;
         } else if (localName.equals("name")) {
-        	currentServer.name = currentValue;
+        	currentServer.putString("Name", currentValue);
         	currentValue = null;
         } else if (localName.equals("gametype")) {
-        	currentServer.game = currentValue;
+        	currentServer.putString("Game", currentValue);
         	currentValue = null;
         } else if (localName.equals("map")) {
-        	currentServer.map = currentValue;
+        	currentServer.putString("Map", currentValue);
         	currentValue = null;
         } else if (localName.equals("numplayers")) {
-        	currentServer.numplayers = currentValue;
+        	currentServer.putString("Number of players", currentValue);
         	currentValue = null;
         } else if (localName.equals("maxplayers")) {
-        	currentServer.maxplayers = currentValue;
+        	currentServer.putString("Max players", currentValue);
+        	currentValue = null;
+        } else if (localName.equals("numspectators")) {
+        	currentServer.putString("Number of spectators", currentValue);
+        	currentValue = null;
+        } else if (localName.equals("maxspectators")) {
+        	currentServer.putString("Max spectators", currentValue);
+        	currentValue = null;
+        } else if (localName.equals("ping")) {
+        	currentServer.putString("Ping", currentValue);
         	currentValue = null;
         }
 

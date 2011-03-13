@@ -8,7 +8,7 @@
 	 x="0px" y="0px" width="33px" height="33px" viewBox="0 0 33 33" enable-background="new 0 0 33 33" xml:space="preserve">
 <defs>
 </defs>
-<path fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M 8.5391031,26.445234 C 13.26532,
+<path fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M 8.5391031,26.445234 C 13.26532,
 	23.604672 13.871244,14.824751 13.871244,14.824751 13.75006,11.080373 1.9951105,10.951256 1.9951105,10.951256 L 1.8739254,7.4651109 
 	24.102164,7.3359944 24.050788,8.7562757 31.07952,8.8853922 c 0,0 -1.575407,6.0684748 -11.02784,6.1975918 0,0 -1.21185,11.491366 
 	3.635552,11.491366 z" />

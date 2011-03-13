@@ -15,10 +15,10 @@
             </intent-filter>
         </receiver>
         <activity
-                android:label="Clanforge Settings"
                 android:name=".ClanforgePluginPreferences"
-                android:exported="true">
+                android:exported="true" android:label="@string/preferences_name">
         </activity>
+        <activity android:name=".ServerDetailsActivity" android:exported="true" android:configChanges="keyboardHidden|orientation" android:excludeFromRecents="true"></activity>
     </application>
     <uses-sdk android:minSdkVersion="4"/>
     <uses-permission android:name="android.permission.INTERNET"/>

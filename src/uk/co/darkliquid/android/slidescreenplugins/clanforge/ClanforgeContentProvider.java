@@ -1,6 +1,7 @@
 package uk.co.darkliquid.android.slidescreenplugins.clanforge;
 
 import android.content.*;
+import android.os.Bundle;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
@@ -49,7 +50,7 @@ public class ClanforgeContentProvider extends ContentProvider {
             return makeSettingsNeededCursor();
         }
 
-        ArrayList<ClanforgeServer> clanforgeServers = null;
+        ArrayList<Bundle> clanforgeServers = null;
 
         try {
         	/** Handling XML */
@@ -78,25 +79,31 @@ public class ClanforgeContentProvider extends ContentProvider {
         }
 
         MatrixCursor cursor = new MatrixCursor(fields);
+
         for (int i = 0; i < clanforgeServers.size(); i++) {
-        	ClanforgeServer server = clanforgeServers.get(i);
+        	Bundle server = clanforgeServers.get(i);
             MatrixCursor.RowBuilder builder = cursor.newRow();
             long time = Calendar.getInstance().getTime().getTime();
             for (String field : fields) {
                 if (FIELD_ID.equals(field)) {
-                    builder.add("" + server.getID());
+                    builder.add("" + time);
                 } else if (FIELD_TITLE.equals(field)) {
-                    builder.add(server.name);
+                    builder.add(server.getString("Name"));
                 } else if (FIELD_LABEL.equals(field)) {
-                    builder.add(server.game + " - " + server.map);
+                    builder.add(server.getString("Game") + " - " + server.getString("Map"));
                 } else if (FIELD_TEXT.equals(field)) {
-                    builder.add("Players: " + server.numplayers + "/" + server.maxplayers + " Status: " + (server.status ? "UP" : "DOWN"));
+                    builder.add("Players: " + server.getString("Number of players") + "/" + server.getString("Max players") + " Status: " + server.getString("Status"));
                 } else if (FIELD_DATE.equals(field)) {
                     builder.add(time - i);
                 } else if (FIELD_PRIORITY.equals(field)) {
                     builder.add(time - i);
                 } else if (FIELD_INTENT.equals(field)) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://clanforge.multiplay.co.uk"));
+                    Intent intent = new Intent(Intent.ACTION_MAIN);
+                    intent.setComponent(new ComponentName(
+                    	"uk.co.darkliquid.android.slidescreenplugins.clanforge",
+                    	"uk.co.darkliquid.android.slidescreenplugins.clanforge.ServerDetailsActivity"
+                    ));
+                    intent.putExtras(server);
                     builder.add(PluginUtils.encodeIntents(intent));
                 } else {
                     builder.add("");
